@@ -1,5 +1,5 @@
 import pandas as pd
-import pandas_profiling
+from ydata_profiling import ProfileReport
 import streamlit as st
 
 from streamlit_gallery.utils.readme import readme
