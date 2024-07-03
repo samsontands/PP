@@ -1,5 +1,15 @@
+# Core
 streamlit
-pandas
-ydata-profiling
+
+# Streamlit components
+streamlit-ace
+streamlit-discourse
+streamlit-disqus
+streamlit-elements
 streamlit-pandas-profiling
-visions
+streamlit-player
+streamlit-quill
+
+# Dependencies
+pandas-profiling
+requests
