@@ -1,4 +1,15 @@
-pandas==1.1.3
-streamlit==1.22.0
-pandas-profiling==3.6.6
-streamlit-pandas-profiling==0.1.3
+# Core
+streamlit
+
+# Streamlit components
+streamlit-ace
+streamlit-discourse
+streamlit-disqus
+streamlit-elements
+streamlit-pandas-profiling
+streamlit-player
+streamlit-quill
+
+# Dependencies
+pandas-profiling
+requests
