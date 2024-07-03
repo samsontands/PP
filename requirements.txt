@@ -11,5 +11,6 @@ streamlit-player
 streamlit-quill
 
 # Dependencies
+ydata_profiling
 pandas-profiling
 requests
