@@ -1,10 +1,4 @@
-# Core
+pandas
+pandas-profiling
 streamlit
-
-# Streamlit components
 streamlit-pandas-profiling
-
-
-# Dependencies
-ydata_profiling
-requests
