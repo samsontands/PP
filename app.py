@@ -1,30 +1,19 @@
 import pandas as pd
-import pandas_profiling
 import streamlit as st
 from streamlit_pandas_profiling import st_profile_report
+from ydata_profiling import ProfileReport
 
 def main():
-    st.title("Data Profiling with Pandas Profiling")
+    st.title("Pandas Profiling in Streamlit")
 
-    # File uploader
-    uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
+    # Load the data
+    df = pd.read_csv("https://storage.googleapis.com/tf-datasets/titanic/train.csv")
 
-    if uploaded_file is not None:
-        # Read the uploaded file
-        df = pd.read_csv(uploaded_file)
-        st.write("Dataset Preview:")
-        st.write(df.head())
+    # Generate the profile report
+    profile = ProfileReport(df, title="Pandas Profiling Report")
 
-        # Generate and display the profile report
-        pr = gen_profile_report(df, explorative=True)
-        with st.expander("REPORT", expanded=True):
-            st_profile_report(pr)
-    else:
-        st.write("Please upload a CSV file to generate a profile report.")
-
-@st.cache_data
-def gen_profile_report(df, *report_args, **report_kwargs):
-    return df.profile_report(*report_args, **report_kwargs)
+    # Display the report in Streamlit
+    st_profile_report(profile)
 
 if __name__ == "__main__":
     main()
