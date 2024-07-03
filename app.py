@@ -1,6 +1,7 @@
 import pandas as pd
 import streamlit as st
 from streamlit_pandas_profiling import st_profile_report
+from pandas_profiling import ProfileReport
 
 @st.cache_data
 def load_data(file):
@@ -8,7 +9,7 @@ def load_data(file):
 
 @st.cache_resource
 def generate_profile_report(df, *report_args, **report_kwargs):
-    return df.profile_report(*report_args, **report_kwargs)
+    return ProfileReport(df, *report_args, **report_kwargs)
 
 def main():
     st.set_page_config(page_title="CSV Profiler", page_icon="📊", layout="wide")
@@ -35,7 +36,8 @@ def main():
     st.dataframe(df.head())
 
     if st.button("Generate Profiling Report"):
-        pr = generate_profile_report(df, explorative=True)
+        with st.spinner("Generating report..."):
+            pr = generate_profile_report(df, explorative=True)
         with st.expander("REPORT", expanded=True):
             st_profile_report(pr)
 
