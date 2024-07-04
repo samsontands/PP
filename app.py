@@ -20,6 +20,12 @@ if uploaded_file is not None:
         
     st.success('Report generated successfully!')
     
+    # Read the HTML file and display it
+    with open("profiling_report.html", "r", encoding="utf-8") as file:
+        report_html = file.read()
+    
+    st.components.v1.html(report_html, height=800, scrolling=True)
+
     # Provide a download button for the HTML file
     with open("profiling_report.html", "rb") as file:
         btn = st.download_button(
