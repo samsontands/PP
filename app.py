@@ -10,4 +10,4 @@ if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
     st.write(df)
     profile = ProfileReport(df, title="Pandas Profiling Report", explorative=True)
-    st_profile_report(profile)
+    st.write(profile.to_html(), unsafe_allow_html=True)
