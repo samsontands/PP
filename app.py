@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 from ydata_profiling import ProfileReport
 import time
-import os
 
 st.title('Data Profiling with YData Profiling')
 
@@ -17,16 +16,18 @@ if uploaded_file is not None:
         profile = ProfileReport(df, title="Pandas Profiling Report", explorative=True)
         
         # Save the report to an HTML file
-        report_path = "profiling_report.html"
-        profile.to_file(report_path)
+        profile.to_file("profiling_report.html")
         
     st.success('Report generated successfully!')
-
-    # Provide a link to open the report in a new tab
-    st.markdown(f'<a href="file://{os.path.abspath(report_path)}" target="_blank">Click here to view the full report</a>', unsafe_allow_html=True)
+    
+    # Read the HTML file and display it
+    with open("profiling_report.html", "r", encoding="utf-8") as file:
+        report_html = file.read()
+    
+    st.components.v1.html(report_html, height=800, scrolling=True)
 
     # Provide a download button for the HTML file
-    with open(report_path, "rb") as file:
+    with open("profiling_report.html", "rb") as file:
         btn = st.download_button(
             label="Download Profiling Report",
             data=file,
