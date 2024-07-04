@@ -1,5 +1,3 @@
-pandas
-pandas-profiling
 streamlit
-streamlit-pandas-profiling
-matplotlib==3.5.1
+pandas
+ydata-profiling
